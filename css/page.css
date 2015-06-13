@@ -1,0 +1,15 @@
+/******  首页 ********/
+.acount-area{
+	padding: 10px;
+	color: #fff;
+}
+.acount-area img{
+	width: 30px;
+	height: 30px;
+	vertical-align: bottom;
+	margin-right: 5px;
+}
+#account{
+	/*line-height: 40px;*/
+	font-weight: bold;
+}

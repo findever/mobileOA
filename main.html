@@ -6,14 +6,14 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
-
+		<link href="css/page.css" rel="stylesheet" />
 		<style>
-			ul {
-				font-size: 14px;
-				color: #8f8f94;
+			.mui-popover.mui-popover-action .mui-table-view {
+				width: auto;
+				overflow: hidden;
 			}
-			.mui-btn {
-				padding: 10px;
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				line-height: normal;
 			}
 		</style>
 	</head>
@@ -23,100 +23,185 @@
 			<div class="mui-inner-wrap">
 				<header class="mui-bar mui-bar-nav">
 					<a href="#offCanvas" class="mui-icon mui-icon-bars mui-pull-left"></a>
-					<h1 class="mui-title">Container with slide menu</h1>
-					<button id='setting' class=" mui-pull-right mui-btn-link">设置</button>
+					<h1 class="mui-title">首页</h1>
+					<a id="add" class="mui-icon mui-icon-plusempty mui-pull-right"></a>
 				</header>
 				<aside id="offCanvas" class="mui-off-canvas-left">
+					<div class="acount-area">
+						<img src="images/user_grey.png" />
+						<strong id="account">用户</strong>
+					</div>
 					<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
 						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 1</a>
+							<a class="mui-navigate-right">首页</a>
 						</li>
 						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 2</a>
+							<a class="mui-navigate-right" href="./reg.html">我的日程</a>
 						</li>
 						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 3</a>
+							<a class="mui-navigate-right" href="main.html">我的流程</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">我的项目</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">我的客户</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">我的商机</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">文档中心</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">通讯录</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">更多</a>
 						</li>
 					</ul>
 				</aside>
 				<div class="mui-content">
-					<ul class="mui-table-view mui-table-view-chevron">
-						<li id="offCanvas_switch" class="mui-table-view-cell">
-							整体滑动
-							<div class="mui-switch mui-active">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-hidden">cared
+							<div id="M_Toggle" class="mui-switch mui-active">
 								<div class="mui-switch-handle"></div>
 							</div>
 						</li>
-					</ul>
-					<ul class="mui-table-view mui-table-view-chevron">
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 1</a>
+						<li class="mui-table-view-cell mui-media">
+							<a href="#">
+								<img class="mui-media-object mui-pull-left" src="images/iworker_msg_logo.png">
+								<div class="mui-media-body">
+									私信
+									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+								</div>
+							</a>
 						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 2</a>
+						<li class="mui-table-view-cell mui-media">
+							<a href="#">
+								<img class="mui-media-object mui-pull-left" src="images/iworker_dynamic_logo.png">
+								<div class="mui-media-body">
+									动态
+									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+								</div>
+							</a>
 						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 3</a>
+						<li class="mui-table-view-cell mui-media">
+							<a href="#">
+								<img class="mui-media-object mui-pull-left" src="images/iworker_invite_logo.png">
+								<div class="mui-media-body">
+									邀请
+									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+								</div>
+							</a>
 						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 4</a>
+						<li class="mui-table-view-cell mui-media">
+							<a href="#">
+								<img class="mui-media-object mui-pull-left" src="images/iworker_task_logo.png">
+								<div class="mui-media-body">
+									任务
+									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+								</div>
+							</a>
 						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 5</a>
+						<li class="mui-table-view-cell mui-media">
+							<a href="#">
+								<img class="mui-media-object mui-pull-left" src="images/iworker_flow_logo.png">
+								<div class="mui-media-body">
+									流程
+									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+								</div>
+							</a>
 						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 6</a>
+						<li class="mui-table-view-cell mui-media">
+							<a href="#">
+								<img class="mui-media-object mui-pull-left" src="images/iworker_workplan_logo.png">
+								<div class="mui-media-body">
+									日志
+									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+								</div>
+							</a>
 						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 7</a>
-						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 8</a>
-						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right">Item 9</a>
-						</li>
+
 					</ul>
 				</div>
 				<!-- off-canvas backdrop -->
 				<div class="mui-off-canvas-backdrop"></div>
 			</div>
 		</div>
+		<div id="popover" class="mui-popover mui-popover-action">
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="images/icon_jw_to_write_statu_logo_nor.png" width="35px" />
+						<div class="mui-media-body">消息</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="images/icon_jw_to_write_task_logo_nor.png" width="35px" />
+						<div class="mui-media-body">任务</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="images/icon_jw_to_write_msg_logo_nor.png" width="35px" />
+						<div class="mui-media-body">私信</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="images/icon_jw_mutip_call_nor.png" width="35px" />
+						<div class="mui-media-body">电话会议</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="images/icon_jw_write_workplan_nor.png" width="35px" />
+						<div class="mui-media-body">日志</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="images/icon_jw_to_write_expense_logo_nor.png" width="35px" />
+						<div class="mui-media-body">报销</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="images/icon_jw_to_write_leave_logo_nor.png" width="35px" />
+						<div class="mui-media-body">请假</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="images/icon_jw_to_write_expense_apply_logo_nor.png" width="35px" />
+						<div class="mui-media-body">回款</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="images/icon_jw_to_attend_logo_nor.png" width="35px" />
+						<div class="mui-media-body">签到</div>
+					</a>
+				</li>
+			</ul>
+		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
 		<script>
 			(function($, doc) {
 				$.init();
-				var settings = app.getSettings();
-				var account = doc.getElementById('account');
-				//
-				window.addEventListener('show', function() {
-					var state = app.getState();
-					account.innerText = state.account;
-				}, false);
+				doc.getElementById('account').innerText = app.getState().account;
 				$.plusReady(function() {
-					var settingPage = $.preload({
-						"id": 'setting',
-						"url": 'setting.html'
+					// 添加
+					var addBtn = document.getElementById("add");
+					addBtn.addEventListener("tap", function() {
+						$('.mui-popover').popover('toggle', true);
+						return false;
 					});
-					//设置
-					var settingButton = doc.getElementById('setting');
-					//settingButton.style.display = settings.autoLogin ? 'block' : 'none';
-					settingButton.addEventListener('tap', function(event) {
-						$.openWindow({
-							id: 'setting',
-							show: {
-								aniShow: 'pop-in'
-							},
-							styles: {
-								popGesture: 'hide'
-							},
-							waiting: {
-								autoShow: false
-							}
-						});
-					});
-					//--
+					// 退出程序
 					$.oldBack = mui.back;
 					var backButtonPress = 0;
 					$.back = function(event) {
