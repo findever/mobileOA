@@ -188,23 +188,18 @@
 			</ul>
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.0.js" ></script>
 		<script src="../../js/app.js"></script>
 		<script type="text/javascript" src="../../js/common.js"></script>
 		<script>
-			(function($, doc) {
-				$.init();
+			(function(mui, doc) {
+				mui.init();
 				doc.getElementById('account').innerText = app.getState().account;
-				$.plusReady(function() {
-					// 添加
-					var addBtn = document.getElementById("add");
-					addBtn.addEventListener("tap", function() {
-						$('.mui-popover').popover('toggle', true);
-						return false;
-					});
+				mui.plusReady(function() {
 					// 退出程序
-					$.oldBack = mui.back;
+					mui.oldBack = mui.back;
 					var backButtonPress = 0;
-					$.back = function(event) {
+					mui.back = function(event) {
 						backButtonPress++;
 						if (backButtonPress > 1) {
 							plus.runtime.quit();
@@ -218,6 +213,14 @@
 					};
 				});
 			}(mui, document));
+			$(function() {
+				// 添加
+				var addBtn = document.getElementById("add");
+				addBtn.addEventListener("tap", function() {
+					mui('.mui-popover').popover('toggle', true);
+					return false;
+				});
+			});
 		</script>
 	</body>
 

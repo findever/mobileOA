@@ -138,12 +138,6 @@
 				mui.init();
 				doc.getElementById('account').innerText = app.getState().account;
 				mui.plusReady(function() {
-					// 添加
-					var addBtn = document.getElementById("add");
-					addBtn.addEventListener("tap", function() {
-						mui('.mui-popover').popover('toggle', true);
-						return false;
-					});
 					// 退出程序
 					mui.oldBack = mui.back;
 					var backButtonPress = 0;
@@ -161,27 +155,32 @@
 					};
 				});
 			}(mui, document));
-			
-			$(function(){
+			$(function() {
 				// 日历
 				CalendarHandler.initialize();
-				$('.month').on("tap",function(){
+				$('.month').on("tap", function() {
 					CalendarHandler.CalculateLastMonthDays();
 				});
-				$('.selectYear').on("tap",function(){
+				$('.selectYear').on("tap", function() {
 					CalendarHandler.CreateSelectYear(CalendarHandler.showYearStart);
 				});
-				$('.selectMonth').on("tap",function(){
+				$('.selectMonth').on("tap", function() {
 					CalendarHandler.CreateSelectMonth();
 				});
-				$('.nextMonth').on("tap",function(){
+				$('.nextMonth').on("tap", function() {
 					CalendarHandler.CalculateNextMonthDays();
 				});
-				$('.currentDay').on("tap",function(){
-					CalendarHandler.CreateCurrentCalendar(0,0,0);
+				$('.currentDay').on("tap", function() {
+					CalendarHandler.CreateCurrentCalendar(0, 0, 0);
 				});
-				$('#Container').on('tap','.item',function(){
-					alert(CalendarHandler.currentYear+'-'+CalendarHandler.currentMonth+'-'+$(this).text());
+				$('#Container').on('tap', '.item', function() {
+					alert(CalendarHandler.currentYear + '-' + CalendarHandler.currentMonth + '-' + $(this).text());
+				});
+				// 添加
+				var addBtn = document.getElementById("add");
+				addBtn.addEventListener("tap", function() {
+					mui('.mui-popover').popover('toggle', true);
+					return false;
 				});
 			})
 		</script>
