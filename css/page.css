@@ -46,10 +46,10 @@ a.selectBtn {
 a.selectBtn:hover {
 	background-color: #1d953f;
 }
-a.selectBtn.month{
+a.selectBtn.month {
 	text-align: left;
 }
-a.selectBtn.nextMonth{
+a.selectBtn.nextMonth {
 	text-align: right;
 	float: right;
 }
@@ -91,12 +91,12 @@ a.selectBtn.nextMonth{
 .item a:hover {
 	color: #b9121b;
 }
-.item.currentItem{
+.item.currentItem {
 	background-color: #e8e8e8;
 	color: #fff;
 	position: relative;
 }
-.item.currentItem:before{
+.item.currentItem:before {
 	position: absolute;
 	content: "";
 	display: block;
@@ -158,4 +158,12 @@ a.selectBtn.nextMonth{
 }
 #centerCalendarMain {
 	float: left;
+}
+/********* 添加 **************/
+
+.list-right-text {
+	float: right;
+	margin-right: 20px;
+	font-weight: normal;
+	color: #1D953F;
 }

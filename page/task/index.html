@@ -19,6 +19,9 @@
 			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
 				border: none;
 			}
+			.mui-popover.mui-popover-action .mui-table-view .mui-table-view-cell:after {
+				display: none;
+			}
 		</style>
 	</head>
 
@@ -103,25 +106,25 @@
 		<div id="popover" class="mui-popover mui-popover-action">
 			<ul class="mui-table-view mui-grid-view mui-grid-9">
 				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
+					<a href="add_task.html" target="_blank">
 						<img src="../../images/icon_jw_to_write_task_logo_nor.png" width="35px" />
 						<div class="mui-media-body">任务</div>
 					</a>
 				</li>
 				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
+					<a href="#" target="_blank">
 						<img src="../../images/icon_jw_write_workplan_nor.png" width="35px" />
 						<div class="mui-media-body">日志</div>
 					</a>
 				</li>
 				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
+					<a href="#" target="_blank">
 						<img src="../../images/icon_jw_to_write_leave_logo_nor.png" width="35px" />
 						<div class="mui-media-body">请假</div>
 					</a>
 				</li>
 				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
+					<a href="#" target="_blank">
 						<img src="../../images/icon_jw_to_attend_logo_nor.png" width="35px" />
 						<div class="mui-media-body">签到</div>
 					</a>
@@ -174,13 +177,21 @@
 					CalendarHandler.CreateCurrentCalendar(0, 0, 0);
 				});
 				$('#Container').on('tap', '.item', function() {
-					alert(CalendarHandler.currentYear + '-' + CalendarHandler.currentMonth + '-' + $(this).text());
+					if ($(this).hasClass("lastItem")) return;
+					var selDate = CalendarHandler.currentYear + "/" + CalendarHandler.currentMonth + "/" + $(this).text();
+					mui.openWindow({
+						url: "list.html",
+						extras: {
+							title: selDate
+						},
+						show: {
+							duration: 300 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+						}
+					});
 				});
 				// 添加
-				var addBtn = document.getElementById("add");
-				addBtn.addEventListener("tap", function() {
+				$("#add,#popover a").on("tap", function() {
 					mui('.mui-popover').popover('toggle', true);
-					return false;
 				});
 			})
 		</script>
