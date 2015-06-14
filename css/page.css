@@ -1,15 +1,161 @@
 /******  首页 ********/
-.acount-area{
+
+.acount-area {
 	padding: 10px;
 	color: #fff;
 }
-.acount-area img{
+.acount-area img {
 	width: 30px;
 	height: 30px;
 	vertical-align: bottom;
 	margin-right: 5px;
 }
-#account{
+#account {
 	/*line-height: 40px;*/
+	
 	font-weight: bold;
+}
+/** 日历 ******/
+
+#CalendarMain {
+	width: 100%;
+	height: 300px;
+	box-sizing: border-box;
+}
+#title {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	background-color: #b9121b;
+	overflow: hidden;
+}
+a.selectBtn {
+	font-weight: bold;
+	font-size: 15px;
+	color: #fff;
+	cursor: pointer;
+	text-decoration: none;
+	padding: 0px 10px 0px 10px;
+	height: 30px;
+	line-height: 30px;
+	display: inline-block;
+	text-align: center;
+	min-width: 65px;
+	float: left;
+}
+a.selectBtn:hover {
+	background-color: #1d953f;
+}
+a.selectBtn.month{
+	text-align: left;
+}
+a.selectBtn.nextMonth{
+	text-align: right;
+	float: right;
+}
+#context {
+	background-color: #fff;
+	width: 100%;
+}
+.week {
+	width: 100%;
+	height: 30px;
+}
+.week>h3 {
+	float: left;
+	color: #808080;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	margin-top: 5px;
+	font-size: 16px;
+}
+.dayItem {
+	float: left;
+}
+.lastItem>a {
+	color: #d1c7b7 !important;
+}
+.item {
+	color: #333;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+	margin: 0;
+	display: block;
+	font-family: "微软雅黑";
+	font-size: 13px;
+	border-right: 1px #FAFAFA solid;
+	border-top: 1px #FAFAFA solid;
+}
+.item a:hover {
+	color: #b9121b;
+}
+.item.currentItem{
+	background-color: #e8e8e8;
+	color: #fff;
+	position: relative;
+}
+.item.currentItem:before{
+	position: absolute;
+	content: "";
+	display: block;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: #FF1F1F;
+	margin: 5px;
+}
+#Container {
+	overflow: hidden;
+	float: left;
+}
+#center {
+	width: 100%;
+	overflow: hidden;
+}
+#centerMain {
+	width: 300%;
+	margin-left: -100%;
+}
+#selectYearDiv {
+	float: left;
+	background-color: #fff;
+}
+#selectYearDiv>div {
+	float: left;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 16px;
+	border: 1px solid #ccc;
+	margin-left: -1px;
+	margin-top: -1px;
+	cursor: pointer;
+	color: #909090;
+}
+.currentYearSd,
+.currentMontSd {
+	color: #ff4400 !important;
+}
+#selectMonthDiv {
+	float: left;
+	background-color: #fff;
+}
+#selectMonthDiv>div {
+	color: #909090;
+	float: left;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 16px;
+	border: 1px solid #ccc;
+	margin-left: -1px;
+	margin-top: -1px;
+	cursor: pointer;
+}
+#selectYearDiv>div:hover,
+#selectMonthDiv>div:hover {
+	background-color: #efefef;
+}
+#centerCalendarMain {
+	float: left;
 }

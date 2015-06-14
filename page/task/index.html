@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/page.css" rel="stylesheet" />
+		<style>
+			.mui-popover.mui-popover-action .mui-table-view {
+				width: auto;
+				overflow: hidden;
+				text-align: left;
+			}
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				line-height: normal;
+			}
+			.mui-grid-view.mui-grid-9 .mui-table-view-cell {
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-off-canvas-wrap mui-draggable">
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a href="#offCanvas" class="mui-icon mui-icon-bars mui-pull-left"></a>
+					<h1 class="mui-title">我的日程</h1>
+					<a id="add" class="mui-icon mui-icon-plusempty mui-pull-right"></a>
+				</header>
+				<aside id="offCanvas" class="mui-off-canvas-left">
+					<div class="acount-area">
+						<img src="../../images/user_grey.png" />
+						<strong id="account"></strong>
+					</div>
+					<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../main/index.html">首页</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../task/index.html">我的日程</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="main.html">我的流程</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">我的项目</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">我的客户</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">我的商机</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">文档中心</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">通讯录</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">更多</a>
+						</li>
+					</ul>
+				</aside>
+				<div class="mui-content">
+					<div id="CalendarMain">
+						<div id="title">
+							<a class="selectBtn month">&lt;</a>
+							<a class="selectBtn selectYear">2014年</a>
+							<a class="selectBtn selectMonth">6月</a>
+							<a class="selectBtn currentDay">今天</a>
+							<a class="selectBtn nextMonth">&gt;</a>
+						</div>
+						<div id="context">
+							<div class="week">
+								<h3> 一 </h3>
+								<h3> 二 </h3>
+								<h3> 三 </h3>
+								<h3> 四 </h3>
+								<h3> 五 </h3>
+								<h3> 六 </h3>
+								<h3> 日 </h3>
+							</div>
+							<div id="center">
+								<div id="centerMain">
+									<div id="selectYearDiv"></div>
+									<div id="centerCalendarMain">
+										<div id="Container"></div>
+									</div>
+									<div id="selectMonthDiv"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- off-canvas backdrop -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		<div id="popover" class="mui-popover mui-popover-action">
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="../../images/icon_jw_to_write_task_logo_nor.png" width="35px" />
+						<div class="mui-media-body">任务</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="../../images/icon_jw_write_workplan_nor.png" width="35px" />
+						<div class="mui-media-body">日志</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="../../images/icon_jw_to_write_leave_logo_nor.png" width="35px" />
+						<div class="mui-media-body">请假</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a href="#">
+						<img src="../../images/icon_jw_to_attend_logo_nor.png" width="35px" />
+						<div class="mui-media-body">签到</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.0.js"></script>
+		<script src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script type="text/javascript" src="../../js/calendar.js"></script>
+		<script>
+			(function(mui, doc) {
+				mui.init();
+				doc.getElementById('account').innerText = app.getState().account;
+				mui.plusReady(function() {
+					// 添加
+					var addBtn = document.getElementById("add");
+					addBtn.addEventListener("tap", function() {
+						mui('.mui-popover').popover('toggle', true);
+						return false;
+					});
+					// 退出程序
+					mui.oldBack = mui.back;
+					var backButtonPress = 0;
+					mui.back = function(event) {
+						backButtonPress++;
+						if (backButtonPress > 1) {
+							plus.runtime.quit();
+						} else {
+							plus.nativeUI.toast('再按一次退出应用');
+						}
+						setTimeout(function() {
+							backButtonPress = 0;
+						}, 1000);
+						return false;
+					};
+				});
+			}(mui, document));
+			
+			$(function(){
+				// 日历
+				CalendarHandler.initialize();
+				$('.month').on("tap",function(){
+					CalendarHandler.CalculateLastMonthDays();
+				});
+				$('.selectYear').on("tap",function(){
+					CalendarHandler.CreateSelectYear(CalendarHandler.showYearStart);
+				});
+				$('.selectMonth').on("tap",function(){
+					CalendarHandler.CreateSelectMonth();
+				});
+				$('.nextMonth').on("tap",function(){
+					CalendarHandler.CalculateNextMonthDays();
+				});
+				$('.currentDay').on("tap",function(){
+					CalendarHandler.CreateCurrentCalendar(0,0,0);
+				});
+				$('#Container').on('tap','.item',function(){
+					alert(CalendarHandler.currentYear+'-'+CalendarHandler.currentMonth+'-'+$(this).text());
+				});
+			})
+		</script>
+	</body>
+
+</html>
