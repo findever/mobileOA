@@ -8,6 +8,7 @@ mui('.mui-table-view,.user-info,.tap-a').on('tap', 'a', function(e) {
 		return;
 	}
 	window.location.href = href;
+
 });
 
 // 打开新webview

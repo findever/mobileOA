@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/page.css" rel="stylesheet" />
+		<style>
+			.mui-content>.mui-table-view:first-child{
+				margin-top: 0;
+			}
+			.mui-bar-nav~.mui-content{
+				padding: 44px 0;
+			}
+			.mui-bar-bottom{
+				bottom: 0;
+			}
+			.mui-input-row *{
+				vertical-align: middle;
+			}
+			.mui-input-row input{
+				width: 80%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-off-canvas-wrap mui-draggable">
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-icon mui-icon-back mui-pull-left mui-action-back"></a>
+					<h1 class="mui-title"></h1>
+					<a id="add" class="mui-icon mui-icon-person mui-pull-right"></a>
+				</header>
+				<div class="mui-content">
+					<ul class="mui-table-view messages">
+						<li class="mui-table-view-cell mui-media">
+							<a href="javascript:void(0)" class="mui-navigate-right">
+								<img class="mui-media-object mui-pull-left" src="../../images/iworker_msg_logo.png">
+								<div class="mui-media-body">
+									大姚
+									<p class='mui-ellipsis'>妖说：你在哪？？</p>
+								</div>
+							</a>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<a href="javascript:void(0)" class="mui-navigate-right">
+								<img class="mui-media-object mui-pull-left" src="../../images/iworker_dynamic_logo.png">
+								<div class="mui-media-body">
+									动态
+									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<footer class="mui-bar mui-bar-bottom">
+					<div class="mui-input-row">
+						<input type="text" placeholder="普通输入框">
+						<button class="mui-btn mui-btn-primary" onclick="return false;">确认</button>
+					</div>
+				</footer>
+				<!-- off-canvas backdrop -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.0.js" ></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			(function(mui, doc) {
+				mui.init();
+				mui.plusReady(function() {
+					var wv = plus.webview.currentWebview();
+					$('.mui-title').text(wv.mid);
+					//列表点击
+//					$('.messages').on('tap', 'li', function(){
+//						
+//					});
+//					
+				});
+			}(mui, document));
+			$(function() {
+				// 添加
+				var addBtn = document.getElementById("add");
+				addBtn.addEventListener("tap", function() {
+					
+					return false;
+				});
+			});
+		</script>
+	</body>
+
+</html>
