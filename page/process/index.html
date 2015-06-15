@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/page.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div class="mui-off-canvas-wrap mui-draggable">
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a href="#offCanvas" class="mui-icon mui-icon-bars mui-pull-left"></a>
+					<h1 class="mui-title">我的流程</h1>
+					<a id="add" class="mui-icon mui-icon-plusempty mui-pull-right"></a>
+				</header>
+				<aside id="offCanvas" class="mui-off-canvas-left">
+					<div class="acount-area">
+						<img src="../../images/user_grey.png" />
+						<strong id="account"></strong>
+					</div>
+					<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../main/index.html">首页</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../task/index.html">我的日程</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../process/index.html">我的流程</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../project/index.html">我的项目</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../member/index.html">我的客户</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../business/index.html">我的商机</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../file/index.html">文档中心</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../contact/index.html">通讯录</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right" href="../more/index.html">更多</a>
+						</li>
+					</ul>
+				</aside>
+				<div class="mui-content">
+					<div id="segmentedControl" class="mui-segmented-control">
+						<a class="mui-control-item mui-active" href="#item1mobile">待审核</a>
+						<a class="mui-control-item" href="#item2mobile">我发起的</a>
+						<a class="mui-control-item" href="#item3mobile">全部</a>
+					</div>
+					<div class="mui-content-padded">
+						<div id="item1mobile" class="mui-control-content mui-active">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-1
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-2
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-3
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-4
+								</li>
+								<li class="mui-table-view-cell">
+									第一个选项卡子项-5
+								</li>
+							</ul>
+						</div>
+						<div id="item2mobile" class="mui-control-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									第二个选项卡子项-1
+								</li>
+								<li class="mui-table-view-cell">
+									第二个选项卡子项-2
+								</li>
+								<li class="mui-table-view-cell">
+									第二个选项卡子项-3
+								</li>
+								<li class="mui-table-view-cell">
+									第二个选项卡子项-4
+								</li>
+								<li class="mui-table-view-cell">
+									第二个选项卡子项-5
+								</li>
+							</ul>
+						</div>
+						<div id="item3mobile" class="mui-control-content">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									第三个选项卡子项-1
+								</li>
+								<li class="mui-table-view-cell">
+									第三个选项卡子项-2
+								</li>
+								<li class="mui-table-view-cell">
+									第三个选项卡子项-3
+								</li>
+								<li class="mui-table-view-cell">
+									第三个选项卡子项-4
+								</li>
+								<li class="mui-table-view-cell">
+									第三个选项卡子项-5
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- off-canvas backdrop -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		<div id="popover" class="mui-popover mui-popover-action">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell"><a href="#">Item1</a>
+				</li>
+				<li class="mui-table-view-cell"><a href="#">Item2</a>
+				</li>
+				<li class="mui-table-view-cell"><a href="#">Item3</a>
+				</li>
+				<li class="mui-table-view-cell"><a href="#">Item4</a>
+				</li>
+				<li class="mui-table-view-cell"><a href="#">Item5</a>
+				</li>
+			</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.0.js"></script>
+		<script src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			(function(mui, doc) {
+				mui.init();
+				doc.getElementById('account').innerText = app.getState().account;
+				mui.plusReady(function() {
+					// 退出程序
+					mui.oldBack = mui.back;
+					var backButtonPress = 0;
+					mui.back = function(event) {
+						backButtonPress++;
+						if (backButtonPress > 1) {
+							plus.runtime.quit();
+						} else {
+							plus.nativeUI.toast('再按一次退出应用');
+						}
+						setTimeout(function() {
+							backButtonPress = 0;
+						}, 1000);
+						return false;
+					};
+				});
+			}(mui, document));
+			$(function() {
+				// 添加
+				var addBtn = document.getElementById("add");
+				addBtn.addEventListener("tap", function() {
+					mui('.mui-popover').popover('toggle', true);
+					return false;
+				});
+			});
+		</script>
+	</body>
+
+</html>
