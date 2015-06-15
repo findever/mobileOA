@@ -17,14 +17,13 @@ var CalendarHandler = {
 
 		$calendarItem.css("height", $("#context").height() - 30 + "px"); //.css("visibility","hidden");
 		$("#Container").css("height", "0px").css("width", "0px").css("margin-left", $("#context").width() / 2 + "px").css("margin-top", ($("#context").height() - 30) / 2 + "px");
-		$("#Container").animate({
+		$("#Container").css({
 			width: $("#context").width() + "px",
 			height: ($("#context").height() - 30) * 2 + "px",
 			marginLeft: "0px",
 			marginTop: "0px"
-		}, 300, function() {
-			$calendarItem.css("visibility", "visible");
 		});
+		$calendarItem.css("visibility", "visible");
 		$(".dayItem").css("width", $("#context").width() + "px");
 		var itemPaddintTop = $(".dayItem").height() / 6;
 		$(".item").css({

@@ -203,6 +203,19 @@
 					mui.oldBack = mui.back;
 					var backButtonPress = 0;
 					mui.back = function(event) {
+						if (typeof mui.options.beforeback === 'function') {
+							if (mui.options.beforeback() === false) {
+								backButtonPress = 0;
+								return;
+							}
+						}
+						for(var i in mui.backs){
+							var back = mui.backs[i];
+							if(back.name && back.name=="mui" && back.handle()){
+								backButtonPress = 0;
+								return;
+							}
+						}
 						backButtonPress++;
 						if (backButtonPress > 1) {
 							plus.runtime.quit();
