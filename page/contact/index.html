@@ -15,8 +15,55 @@
 			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
 				line-height: normal;
 			}
-			.mui-table-view .mui-navigate-right .mui-media-body {
-				padding-right: 15px;
+			#invite{
+				line-height: 44px;
+			}
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			.oa-contact-content {
+				width: 100%;
+			}
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			.oa-contact-name, oa-contact-position {
+				float: left;
+			}
+			#tab-all .mui-table-view{
+				margin-top: 10px;
+			}
+			#tab-all .mui-table-view::before, #tab-all .mui-table-view::after{
+				height: 0;
+			}
+			#tab-all .m-sort{
+				height: 25px;
+				padding-left: 20px;
+				line-height: 25px;
+				background-color: #EFEFF4;
+			}
+			#tab-all .mui-table-view-cell{
+				padding: 5px 10px;
+			}
+			#tab-groups .mui-table-view{
+				margin-top: 0;
+			}
+			#tab-groups .mui-table-view-cell:after{
+				left: 0;
+			}
+			.mui-table-view-cell.mui-collapse .mui-collapse-content{
+				padding: 0 0 5px;
 			}
 		</style>
 	</head>
@@ -24,180 +71,197 @@
 	<body>
 		<div class="mui-off-canvas-wrap mui-draggable">
 			<div class="mui-inner-wrap">
+				<!--导航栏-->
 				<header class="mui-bar mui-bar-nav">
 					<a href="#offCanvas" class="mui-icon mui-icon-bars mui-pull-left"></a>
 					<h1 class="mui-title">通讯录</h1>
-					<a id="add" class="mui-icon mui-icon-plusempty mui-pull-right"></a>
+					<a id="invite" class="mui-pull-right" href="invite.html" target="_blank">邀请</a>
 				</header>
-				<aside id="offCanvas" class="mui-off-canvas-left">
-					<div class="acount-area">
-						<img src="../../images/user_grey.png" />
-						<strong id="account">用户</strong>
+				<!--\导航栏-->
+				
+				<!--tab切换-->
+				<nav class="mui-bar mui-bar-tab">
+					<a class="mui-tab-item mui-active" href="#tab-all">
+						<span class="mui-icon mui-icon-contact"></span>
+						<span class="mui-tab-label">全部</span>
+					</a>
+					<a class="mui-tab-item" href="#tab-groups">
+						<span class="mui-icon mui-icon-list"></span>
+						<span class="mui-tab-label">分组</span>
+					</a>
+				</nav>
+				<!--\tab切换-->
+				
+				<!--主内容区-->
+				<div class="mui-content">				
+					<div id="tab-all" class="mui-control-content  mui-active">
+						<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+							<h5 class="m-sort">Y</h5>
+							<li class="mui-table-view-cell">
+								<div class="mui-slider-cell">
+									<div class="oa-contact-cell mui-table">
+										<div class="oa-contact-avatar mui-table-cell">
+											<img src="../../images/60x60.gif" />
+										</div>
+										<div class="oa-contact-content mui-table-cell">
+											<div class="mui-clearfix">
+												<h4 class="oa-contact-name">叶文洁</h4>
+												<span class="oa-contact-position mui-h6">董事长</span>
+											</div>
+											<p class="oa-contact-email mui-h6">
+												yewenjie@sina.com
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="mui-table-view-cell">
+								<div class="mui-slider-cell">
+									<div class="oa-contact-cell mui-table">
+										<div class="oa-contact-avatar mui-table-cell">
+											<img src="../../images/60x60.gif" />
+										</div>
+										<div class="oa-contact-content mui-table-cell">
+											<div class="mui-clearfix">
+												<h4 class="oa-contact-name">叶文洁</h4>
+												<span class="oa-contact-position mui-h6">董事长</span>
+											</div>
+											<p class="oa-contact-email mui-h6">
+												yewenjie@sina.com
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+							<h5 class="m-sort">H</h5>
+							<li class="mui-table-view-cell">
+								<div class="mui-slider-cell">
+									<div class="oa-contact-cell mui-table">
+										<div class="oa-contact-avatar mui-table-cell">
+											<img src="../../images/60x60.gif" />
+										</div>
+										<div class="oa-contact-content mui-table-cell">
+											<div class="mui-clearfix">
+												<h4 class="oa-contact-name">花小花</h4>
+												<span class="oa-contact-position mui-h6">董事长</span>
+											</div>
+											<p class="oa-contact-email mui-h6">
+												yewenjie@sina.com
+											</p>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
 					</div>
-					<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="../main/index.html">首页</a>
-						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="../task/index.html">我的日程</a>
-						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="../process/index.html">我的流程</a>
-						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="../project/index.html">我的项目</a>
-						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="../member/index.html">我的客户</a>
-						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="../business/index.html">我的商机</a>
-						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="../file/index.html">文档中心</a>
-						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="../contact/index.html">通讯录</a>
-						</li>
-						<li class="mui-table-view-cell">
-							<a class="mui-navigate-right" href="../more/index.html">更多</a>
-						</li>
-					</ul>
-				</aside>
-				<div class="mui-content">
-					<ul class="mui-table-view">
-						<li class="mui-table-view-cell mui-hidden">cared
-							<div id="M_Toggle" class="mui-switch mui-active">
-								<div class="mui-switch-handle"></div>
-							</div>
-						</li>
-						<li class="mui-table-view-cell mui-media">
-							<a href="#" class="mui-navigate-right">
-								<img class="mui-media-object mui-pull-left" src="../../images/iworker_msg_logo.png">
-								<div class="mui-media-body">
-									私信
-									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+					<div id="tab-groups" class="mui-control-content">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell mui-collapse">
+								<a class="mui-navigate-right">神族</a>
+								<div class="mui-collapse-content">
+									<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+										<li class="mui-table-view-cell">
+											<div class="mui-slider-cell">
+												<div class="oa-contact-cell mui-table">
+													<div class="oa-contact-avatar mui-table-cell">
+														<img src="../../images/60x60.gif" />
+													</div>
+													<div class="oa-contact-content mui-table-cell">
+														<div class="mui-clearfix">
+															<h4 class="oa-contact-name">叶文洁</h4>
+															<span class="oa-contact-position mui-h6">董事长</span>
+														</div>
+														<p class="oa-contact-email mui-h6">
+															yewenjie@sina.com
+														</p>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
 								</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media">
-							<a href="#" class="mui-navigate-right">
-								<img class="mui-media-object mui-pull-left" src="../../images/iworker_dynamic_logo.png">
-								<div class="mui-media-body">
-									动态
-									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+							</li>
+							<li class="mui-table-view-cell mui-collapse">
+								<a class="mui-navigate-right">魔族</a>
+								<div class="mui-collapse-content">
+									<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+										<li class="mui-table-view-cell">
+											<div class="mui-slider-cell">
+												<div class="oa-contact-cell mui-table">
+													<div class="oa-contact-avatar mui-table-cell">
+														<img src="../../images/60x60.gif" />
+													</div>
+													<div class="oa-contact-content mui-table-cell">
+														<div class="mui-clearfix">
+															<h4 class="oa-contact-name">叶文洁</h4>
+															<span class="oa-contact-position mui-h6">董事长</span>
+														</div>
+														<p class="oa-contact-email mui-h6">
+															yewenjie@sina.com
+														</p>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
 								</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media">
-							<a href="#" class="mui-navigate-right">
-								<img class="mui-media-object mui-pull-left" src="../../images/iworker_invite_logo.png">
-								<div class="mui-media-body">
-									邀请
-									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-								</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media">
-							<a href="#" class="mui-navigate-right">
-								<img class="mui-media-object mui-pull-left" src="../../images/iworker_task_logo.png">
-								<div class="mui-media-body">
-									任务
-									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-								</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media">
-							<a href="#" class="mui-navigate-right">
-								<img class="mui-media-object mui-pull-left" src="../../images/iworker_flow_logo.png">
-								<div class="mui-media-body">
-									流程
-									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-								</div>
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-media">
-							<a href="#" class="mui-navigate-right">
-								<img class="mui-media-object mui-pull-left" src="../../images/iworker_workplan_logo.png">
-								<div class="mui-media-body">
-									日志
-									<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-								</div>
-							</a>
-						</li>
-
-					</ul>
+							</li>
+						</ul>					
+					</div>
+					<!-- off-canvas backdrop -->
+					<div class="mui-off-canvas-backdrop"></div>
 				</div>
-				<!-- off-canvas backdrop -->
-				<div class="mui-off-canvas-backdrop"></div>
-			</div>
+				<!--\主内容区-->
+				
+				<!--侧边栏-->
+				<aside id="offCanvas" class="mui-off-canvas-left">
+						<div class="acount-area">
+							<img src="../../images/user_grey.png" />
+							<strong id="account">用户</strong>
+						</div>
+						<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" href="../main/index.html">首页</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" href="../task/index.html">我的日程</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" href="../process/index.html">我的流程</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" href="../project/index.html">我的项目</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" href="../member/index.html">我的客户</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" href="../business/index.html">我的商机</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" href="../file/index.html">文档中心</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" href="../contact/index.html">通讯录</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right" href="../more/index.html">更多</a>
+							</li>
+						</ul>
+					</aside>
+					<!--\侧边栏-->
+			</div>			
 		</div>
-		<div id="popover" class="mui-popover mui-popover-action">
-			<ul class="mui-table-view mui-grid-view mui-grid-9">
-				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
-						<img src="../../images/icon_jw_to_write_statu_logo_nor.png" width="35px" />
-						<div class="mui-media-body">消息</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
-						<img src="../../images/icon_jw_to_write_task_logo_nor.png" width="35px" />
-						<div class="mui-media-body">任务</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
-						<img src="../../images/icon_jw_to_write_msg_logo_nor.png" width="35px" />
-						<div class="mui-media-body">私信</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
-						<img src="../../images/icon_jw_mutip_call_nor.png" width="35px" />
-						<div class="mui-media-body">电话会议</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
-						<img src="../../images/icon_jw_write_workplan_nor.png" width="35px" />
-						<div class="mui-media-body">日志</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
-						<img src="../../images/icon_jw_to_write_expense_logo_nor.png" width="35px" />
-						<div class="mui-media-body">报销</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
-						<img src="../../images/icon_jw_to_write_leave_logo_nor.png" width="35px" />
-						<div class="mui-media-body">请假</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
-						<img src="../../images/icon_jw_to_write_expense_apply_logo_nor.png" width="35px" />
-						<div class="mui-media-body">回款</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4">
-					<a href="#">
-						<img src="../../images/icon_jw_to_attend_logo_nor.png" width="35px" />
-						<div class="mui-media-body">签到</div>
-					</a>
-				</li>
-			</ul>
-		</div>
+
 		<script src="../../js/mui.min.js"></script>
-		<script type="text/javascript" src="../../js/jquery-1.11.0.js" ></script>
-		<script src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.0.js"></script>
 		<script type="text/javascript" src="../../js/common.js"></script>
 		<script>
 			(function(mui, doc) {
 				mui.init();
-				doc.getElementById('account').innerText = app.getState().account;
+//				doc.getElementById('account').innerText = app.getState().account;
 				mui.plusReady(function() {
 					// 退出程序
 					mui.oldBack = mui.back;
@@ -230,11 +294,20 @@
 				});
 			}(mui, document));
 			$(function() {
-				// 添加
-				var addBtn = document.getElementById("add");
-				addBtn.addEventListener("tap", function() {
-					mui('.mui-popover').popover('toggle', true);
-					return false;
+				// 联系人列表点击
+				$('.mui-table-view-striped').children('li').each(function(i, v){
+					$(v).on('tap', function(){
+						var name = $('.oa-contact-name', this).text();
+						var opt = {
+							url: 'userinfo.html',
+							id: 'userinfo.html',
+							extras: {
+								title: name,
+								uid: 3
+							}
+						};
+						mui.openWindow(opt);
+					});
 				});
 			});
 		</script>

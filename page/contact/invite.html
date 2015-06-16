@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<style>
+			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
+				line-height: normal;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-off-canvas-wrap mui-draggable">
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<button class="mui-btn mui-btn-link mui-btn-nav mui-pull-left mui-action-back">
+						<span class="mui-icon mui-icon-left-nav"></span>
+					</button>
+					<h1 class="mui-title">邀请</h1>
+				</header>
+				<div class="mui-content">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-media">
+							<a>
+								<img class="mui-media-object mui-pull-left" src="../../images/icon_jw_to_attend_logo_nor.png">
+								<div class="mui-media-body">
+									10:03
+									<p class='mui-ellipsis'>广东省广州市番禺区南村镇市头村</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+
+				</div>
+				<!-- off-canvas backdrop -->
+				<div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.0.js"></script>
+		<script src="../../js/app.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script>
+			(function(mui, doc) {
+				mui.init();
+				mui.plusReady(function() {
+					// 标题栏
+					var self = plus.webview.currentWebview();
+					$('.mui-title').text(self.title);
+				});
+			}(mui, document));
+			$(function() {
+				// 添加
+				$("#add,#popover a").on("tap", function() {
+					mui('.mui-popover').popover('toggle', true);
+				});
+			});
+		</script>
+	</body>
+
+</html>
