@@ -27,6 +27,11 @@
 			}
 			.sex{
 				padding-left: 5px;
+				padding-right: 15px;
+			}
+			.mui-icon-phone{
+				font-size: 16px;
+				color: #007AFF;
 			}
 		</style>
 	</head>
@@ -41,26 +46,24 @@
 					<h1 class="mui-title"></h1>
 				</header>
 				<div class="mui-content">
-					<h3 class="m-userinfo"><img class="mui-pull-left" src="../../images/60x60.gif"/><p><span class="name"></span><br /><span class="sex">女</span></p></h3>
+					<h3 class="m-userinfo"><img class="mui-pull-left" src="../../images/60x60.gif"/><p><span class="name"></span><br /><span class="sex">女</span><span class="mui-icon mui-icon-phone">10086</span></p></h3>
 					<ul class="mui-table-view">
 						<li class="mui-table-view-cell mui-media">
-							<a>
-								<img class="mui-media-object mui-pull-left" src="../../images/icon_jw_to_attend_logo_nor.png">
-								<div class="mui-media-body">
-									10:03
-									<p class='mui-ellipsis'>广东省广州市番禺区南村镇市头村</p>
-								</div>
-							</a>
+							<a href="" class="mui-navigate-right">发私信</a>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<a href="" class="mui-navigate-right">发任务</a>
+						</li>
+						<li class="mui-table-view-cell mui-media">
+							<a href="" class="mui-navigate-right">查看个人动态</a>
 						</li>
 					</ul>
-
 				</div>
 				<!-- off-canvas backdrop -->
 				<div class="mui-off-canvas-backdrop"></div>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
-		<script type="text/javascript" src="../../js/jquery-1.11.0.js"></script>
 		<script src="../../js/app.js"></script>
 		<script type="text/javascript" src="../../js/common.js"></script>
 		<script>
@@ -68,9 +71,19 @@
 				mui.init();
 				mui.plusReady(function() {
 					// 标题栏
-					var self = plus.webview.currentWebview();
-					$('.mui-title').text(self.title);
-					$('.name').text(self.title);
+					var wcv = plus.webview.currentWebview();
+					doc.querySelector('.mui-title').innerText = wcv.title;
+					doc.querySelector('.name').innerText = wcv.title;
+					
+					plus.nativeUI.closeWaiting();
+					wcv.show('slide-in-bottom');
+					
+//					拨打电话
+					doc.querySelector('.mui-icon-phone').addEventListener('tap', function(e){
+						var phoneNum = parseInt(e.target.innerText);
+						plus.device.dial(phoneNum, false);
+					}, false);
+					
 				});
 			}(mui, document));
 		</script>

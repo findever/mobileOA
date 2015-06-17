@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/page.css" rel="stylesheet" />
+		<style>
+			#invite{
+				line-height: 44px;
+			}
+			.oa-contact-cell.mui-table .mui-table-cell {
+				padding: 11px 0;
+				vertical-align: middle;
+			}
+			.oa-contact-cell {
+				position: relative;
+				margin: -11px 0;
+			}
+			.oa-contact-avatar {
+				width: 75px;
+			}
+			.oa-contact-avatar img {
+				border-radius: 50%;
+			}
+			.oa-contact-content {
+				width: 100%;
+			}
+			.oa-contact-name {
+				margin-right: 20px;
+			}
+			.oa-contact-name, oa-contact-position {
+				float: left;
+			}
+			#contacts .mui-table-view{
+				margin-top: 10px;
+			}
+			#contacts .mui-table-view::before, 
+			#contacts .mui-table-view::after{
+				height: 0;
+			}
+			/*#contacts .m-sort{
+				height: 25px;
+				padding-left: 20px;
+				margin: 0;
+				line-height: 25px;
+				background-color: #EFEFF4;
+			}*/
+			#contacts .mui-table-view-cell{
+				padding: 5px 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+			<div class="mui-inner-wrap">
+				<!--导航栏-->
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-icon mui-icon-back mui-pull-left mui-action-back"></a>
+					<h1 class="mui-title">通讯录导入</h1>
+					<a id="invite" class="mui-pull-right" href="invite.html" target="_blank">邀请</a>
+				</header>
+				<!--\导航栏-->
+				
+				<!--主内容区-->
+				<div class="mui-content mui-scroll">				
+					<ul id="contacts" class="mui-table-view mui-table-view-striped mui-table-view-condensed mui-scroll-w">
+						<!--模板数据-->
+					</ul>
+				</div>
+				<!--\主内容区-->          
+			</div>			
+		<script id="_contacts" type="text/html">
+			<% for(var i in contacts){ var contact = contacts[i]; %>
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-cell">
+						<div class="oa-contact-cell mui-table">
+							<div class="oa-contact-avatar mui-table-cell">
+								<img src="../../images/60x60.gif" />
+							</div>
+							<div class="oa-contact-content mui-table-cell">
+								<div class="mui-clearfix">
+									<h4 class="oa-contact-name"><%=contact.displayName%></h4>
+									<span class="oa-contact-position mui-h6"><%=contact.phoneNumbers['length']%></span>				
+								</div>
+								<p class="oa-contact-email mui-h6">
+									<span class="mui-icon mui-icon-phone"></span>&nbsp;&nbsp;10001
+								</p>
+							</div>
+						</div>
+					</div>
+				</li>
+			<% } %>
+		</script>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="../../js/arttmpl.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+
+		<script>
+			(function(mui, doc) {
+				mui.init();
+//				doc.getElementById('account').innerText = app.getState().account;
+				mui.plusReady(function() {
+					readContacts();
+
+					/**
+					 * 获取系统联系人
+					 * @return void 
+					 */
+					function readContacts(){
+						plus.contacts.getAddressBook(0, function(adbk){
+							adbk.find(null, function(contacts){
+								for(var i in contacts){
+									var contact = contacts[i],
+										email = contact.emails ? contact.emails[0].value : '',
+										phoneNum = contact.phoneNumbers ? contact.phoneNumbers[0].value : '';
+									var item = '<li class="mui-table-view-cell">
+													<div class="mui-slider-cell">
+														<div class="oa-contact-cell mui-table">
+															<div class="oa-contact-avatar mui-table-cell">
+																<img src="../../images/60x60.gif" />
+															</div>
+															<div class="oa-contact-content mui-table-cell">
+																<div class="mui-clearfix">
+																	<h4 class="oa-contact-name">'+ conta +'</h4>
+																	<span class="oa-contact-position mui-h6"><%=contact.phoneNumbers['length']%></span>				
+																</div>
+																<p class="oa-contact-email mui-h6">
+																	<span class="mui-icon mui-icon-phone"></span>&nbsp;&nbsp;10001
+																</p>
+															</div>
+														</div>
+													</div>
+												</li>
+								}
+								doc.querySelector('#contacts').innerHTML = html;
+							}, function(e){
+								console.log('获取联系人失败：' + e.message);
+							})
+						}, function(e){
+							console.log('获取通讯录失败：' + e.message);
+						}, {multiple:true});
+					}
+				});
+			}(mui, document));
+//			$(function() {
+//				// 联系人列表点击
+//				$('.mui-table-view-striped').children('li').each(function(i, v){
+//					$(v).on('tap', function(){
+//						var name = $('.oa-contact-name', this).text();
+//						var opt = {
+//							url: 'userinfo.html',
+//							id: 'userinfo.html',
+//							show: {
+//								autoShow: false
+//							},
+//							extras: {
+//								title: name,
+//								uid: 3
+//							}
+//						};
+//						mui.openWindow(opt);
+//					});
+//				});
+//			});
+		</script>
+	</body>
+
+</html>

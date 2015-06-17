@@ -7,8 +7,14 @@
 		<title></title>
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<style>
-			.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
-				line-height: normal;
+			.mui-table-view-cell:after{
+				left: 0;
+			}
+			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell{
+				padding-left: 15px;
+			}
+			#invite input{
+				border: 5px solid red;
 			}
 		</style>
 	</head>
@@ -25,40 +31,46 @@
 				<div class="mui-content">
 					<ul class="mui-table-view">
 						<li class="mui-table-view-cell mui-media">
-							<a>
-								<img class="mui-media-object mui-pull-left" src="../../images/icon_jw_to_attend_logo_nor.png">
-								<div class="mui-media-body">
-									10:03
-									<p class='mui-ellipsis'>广东省广州市番禺区南村镇市头村</p>
-								</div>
+							<a class="mui-navigate-right" href="contacts.html" target="_blank">
+								<span class="mui-icon mui-icon-person"></span>
+								&nbsp;&nbsp;通讯录导入
 							</a>
 						</li>
+						<li class="mui-table-view-cell mui-collapse">
+							<a class="mui-navigate-right">
+								<span class="mui-icon mui-icon-person"></span>
+								&nbsp;&nbsp;手动邀请
+							</a>
+							<div class="mui-collapse-content">
+								<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+									<li class="mui-table-view-cell">
+										<div class="mui-slider-cell">
+											<form id="invite-form" action="">
+												<input class="mui-input-clear" type="text" name="" id="inviteName" placeholder="邀请人姓名"/>
+												<input class="mui-input-clear" type="tel" name="" id="invitePhoneNum" placeholder="邀请人号码" />
+												<button type="button" class="mui-btn mui-btn-primary mui-btn-block" onclick="return false;">邀请</button>
+											</form>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
 					</ul>
-
 				</div>
 				<!-- off-canvas backdrop -->
 				<div class="mui-off-canvas-backdrop"></div>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
-		<script type="text/javascript" src="../../js/jquery-1.11.0.js"></script>
 		<script src="../../js/app.js"></script>
 		<script type="text/javascript" src="../../js/common.js"></script>
 		<script>
 			(function(mui, doc) {
 				mui.init();
-				mui.plusReady(function() {
-					// 标题栏
-					var self = plus.webview.currentWebview();
-					$('.mui-title').text(self.title);
-				});
+				
+//				手动邀请表单验证
+
 			}(mui, document));
-			$(function() {
-				// 添加
-				$("#add,#popover a").on("tap", function() {
-					mui('.mui-popover').popover('toggle', true);
-				});
-			});
 		</script>
 	</body>
 
