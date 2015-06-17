@@ -11,9 +11,28 @@
 	margin-right: 5px;
 }
 #account {
-	/*line-height: 40px;*/
-	
 	font-weight: bold;
+	color: #666;
+}
+/*** 侧边栏 ****/
+.mui-off-canvas-left, .mui-off-canvas-right{
+	background-color: #E8E8E8;
+}
+aside .mui-table-view-inverted{
+	background-color: #E8E8E8;
+}
+aside .mui-table-view-cell>a:not(.mui-btn){
+	color: #666;
+}
+aside .mui-table-view-chevron .mui-table-view-cell>a:not(.mui-btn).mui-active{
+	color: #333;
+	background-color: #909090;
+}
+aside .mui-table-view-inverted .mui-table-view-cell:after{
+	background-color: #D3D3D3;
+}
+aside .mui-table-view-inverted:after{
+	height: 0;
 }
 /** 日历 ******/
 
