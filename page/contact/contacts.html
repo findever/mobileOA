@@ -34,64 +34,106 @@
 			.oa-contact-name, oa-contact-position {
 				float: left;
 			}
-			#contacts .mui-table-view{
+			.mui-table-view{
 				margin-top: 10px;
 			}
 			#contacts .mui-table-view::before, 
 			#contacts .mui-table-view::after{
 				height: 0;
 			}
-			/*#contacts .m-sort{
-				height: 25px;
-				padding-left: 20px;
-				margin: 0;
-				line-height: 25px;
-				background-color: #EFEFF4;
-			}*/
 			#contacts .mui-table-view-cell{
 				padding: 5px 10px;
+			}
+			.mui-icon-phone{
+				font-size: 14px;
+			}
+			.mui-input-group .mui-input-row{
+				height: auto;
+			}
+			.mui-input-group .mui-input-row:after{
+				height: 0;
+			}
+			.mui-checkbox input[type=checkbox], .mui-radio input[type=radio]{
+				top: 20px;
+			}
+			.mui-checkbox label, .mui-radio label{
+				padding: 5px 0 0;
 			}
 		</style>
 	</head>
 
 	<body>
-			<div class="mui-inner-wrap">
-				<!--导航栏-->
-				<header class="mui-bar mui-bar-nav">
-					<a class="mui-icon mui-icon-back mui-pull-left mui-action-back"></a>
-					<h1 class="mui-title">通讯录导入</h1>
-					<a id="invite" class="mui-pull-right" href="invite.html" target="_blank">邀请</a>
-				</header>
-				<!--\导航栏-->
+		<!--导航栏-->
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-back mui-pull-left mui-action-back"></a>
+			<h1 class="mui-title">通讯录邀请</h1>
+			<a id="invite" class="mui-pull-right">邀请</a>
+		</header>
+		<!--\导航栏-->
 				
-				<!--主内容区-->
-				<div class="mui-content mui-scroll">				
-					<ul id="contacts" class="mui-table-view mui-table-view-striped mui-table-view-condensed mui-scroll-w">
-						<!--模板数据-->
-					</ul>
-				</div>
-				<!--\主内容区-->          
-			</div>			
-		<script id="_contacts" type="text/html">
-			<% for(var i in contacts){ var contact = contacts[i]; %>
+		<!--主内容区-->
+		<div class="mui-content">
+			<form class="mui-input-group">
+			<ul id="contacts" class="mui-table-view">
+				<!--模板数据-->
+				
 				<li class="mui-table-view-cell">
-					<div class="mui-slider-cell">
-						<div class="oa-contact-cell mui-table">
-							<div class="oa-contact-avatar mui-table-cell">
-								<img src="../../images/60x60.gif" />
-							</div>
-							<div class="oa-contact-content mui-table-cell">
-								<div class="mui-clearfix">
-									<h4 class="oa-contact-name"><%=contact.displayName%></h4>
-									<span class="oa-contact-position mui-h6"><%=contact.phoneNumbers['length']%></span>				
+					<div class="mui-input-row mui-checkbox">
+						<label>
+							<div class="mui-slider-cell">
+								<div class="oa-contact-cell mui-table">
+									<div class="oa-contact-avatar mui-table-cell">
+										<img src="../../images/60x60.gif" />
+									</div>
+									<div class="oa-contact-content mui-table-cell">
+										<div class="mui-clearfix">
+												<h4 class="oa-contact-name">老王</h4>
+										</div>
+										<p class="oa-contact-phone mui-h6">
+											<span class="mui-icon mui-icon-phone">&nbsp;10001</span>
+										</p>
+									</div>
 								</div>
-								<p class="oa-contact-email mui-h6">
-									<span class="mui-icon mui-icon-phone"></span>&nbsp;&nbsp;10001
-								</p>
 							</div>
-						</div>
+						</label>
+						<input name="checkbox1" value="Item 3" type="checkbox" >
 					</div>
 				</li>
+				
+				
+			</ul>
+			</form>
+		</div>
+		<!--\主内容区-->          
+		<script id="_contacts" type="text/template">
+			
+			<% for(var i in contacts){ var contact = contacts[i]; %>
+				<% if(contact.phoneNumbers){ var phoneNum = contact.phoneNumbers[0].value; %>
+				<li class="mui-table-view-cell">
+					<div class="mui-input-row mui-checkbox">
+						<label>
+							<div class="mui-slider-cell">
+								<div class="oa-contact-cell mui-table">
+									<div class="oa-contact-avatar mui-table-cell">
+										<img src="../../images/60x60.gif" />
+									</div>
+									<div class="oa-contact-content mui-table-cell">
+										<div class="mui-clearfix">
+											<% if(contact.displayName){ var name= contact.displayName; %>
+												<h4 class="oa-contact-name"><%= name %></h4>
+											<% } %>
+										</div>
+										<p class="oa-contact-phone mui-h6">
+											<span class="mui-icon mui-icon-phone">&nbsp;<%= phoneNum %></span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</label>
+						<input name="checkbox1" value="Item 3" type="checkbox" >
+					</div>
+				</li>
+				<% } %>
 			<% } %>
 		</script>
 		<script src="../../js/mui.min.js"></script>
@@ -104,6 +146,8 @@
 				mui.init();
 //				doc.getElementById('account').innerText = app.getState().account;
 				mui.plusReady(function() {
+					var wv = plus.webview.currentWebview();
+					plus.nativeUI.closeWaiting();
 					readContacts();
 
 					/**
@@ -113,59 +157,49 @@
 					function readContacts(){
 						plus.contacts.getAddressBook(0, function(adbk){
 							adbk.find(null, function(contacts){
-								for(var i in contacts){
-									var contact = contacts[i],
-										email = contact.emails ? contact.emails[0].value : '',
-										phoneNum = contact.phoneNumbers ? contact.phoneNumbers[0].value : '';
-									var item = '<li class="mui-table-view-cell">
-													<div class="mui-slider-cell">
-														<div class="oa-contact-cell mui-table">
-															<div class="oa-contact-avatar mui-table-cell">
-																<img src="../../images/60x60.gif" />
-															</div>
-															<div class="oa-contact-content mui-table-cell">
-																<div class="mui-clearfix">
-																	<h4 class="oa-contact-name">'+ conta +'</h4>
-																	<span class="oa-contact-position mui-h6"><%=contact.phoneNumbers['length']%></span>				
-																</div>
-																<p class="oa-contact-email mui-h6">
-																	<span class="mui-icon mui-icon-phone"></span>&nbsp;&nbsp;10001
-																</p>
-															</div>
-														</div>
-													</div>
-												</li>
-								}
+								contacts.sort(function(a, b){
+									if(a.name.familyName && b.name.familyName){
+										return a.name.familyName.localeCompare(b.name.familyName);	
+									}else{
+										return a.displayName.localeCompare(b.displayName);
+									}
+								});
+								var html = template('_contacts', {contacts: contacts});
 								doc.querySelector('#contacts').innerHTML = html;
+								wv.show();
+								wv.setStyle({scrollIndicator: 'none'});
+								var w = plus.nativeUI.showWaiting('正在导入联系人···');
+								setTimeout(function(){
+									w.close();
+								},800);
 							}, function(e){
 								console.log('获取联系人失败：' + e.message);
-							})
+							});
 						}, function(e){
 							console.log('获取通讯录失败：' + e.message);
-						}, {multiple:true});
+						}, {multiple: true});
 					}
 				});
 			}(mui, document));
-//			$(function() {
-//				// 联系人列表点击
-//				$('.mui-table-view-striped').children('li').each(function(i, v){
-//					$(v).on('tap', function(){
-//						var name = $('.oa-contact-name', this).text();
-//						var opt = {
-//							url: 'userinfo.html',
-//							id: 'userinfo.html',
-//							show: {
-//								autoShow: false
-//							},
-//							extras: {
-//								title: name,
-//								uid: 3
-//							}
-//						};
-//						mui.openWindow(opt);
-//					});
-//				});
-//			});
+			$(function() {
+				// 邀请
+				var selectedItems = Array();
+				$('#invite').bind('tap', function(){
+					var selected = $('#contacts :checked');
+					if(selected.length == 0){
+						plus.nativeUI.toast('请选择联系人');
+						return false;;
+					}
+					selected.each(function(i, v){
+						var name = $(v).parent().find('.oa-contact-name').text();
+						var phoneNum = $.trim($(v).parent().find('.mui-icon-phone').text());
+						selectedItems.push({name: name, phoneNum: phoneNum});
+					});
+					$.each(selectedItems, function(i, v) {
+						console.log(v.phoneNum);
+					});
+				});
+			});
 		</script>
 	</body>
 
