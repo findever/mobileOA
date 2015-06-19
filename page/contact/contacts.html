@@ -183,8 +183,8 @@
 			}(mui, document));
 			$(function() {
 				// 邀请
-				var selectedItems = Array();
-				$('#invite').bind('tap', function(){
+				$('#invite').on('tap', function(){
+					var selectedItems = Array();
 					var selected = $('#contacts :checked');
 					if(selected.length == 0){
 						plus.nativeUI.toast('请选择联系人');

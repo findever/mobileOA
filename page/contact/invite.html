@@ -7,13 +7,13 @@
 		<title></title>
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<style>
-			.mui-table-view-cell:after{
+			.mui-table-view-cell:after {
 				left: 0;
 			}
-			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell{
+			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell {
 				padding-left: 15px;
 			}
-			#invite input{
+			#invite input {
 				border: 5px solid red;
 			}
 		</style>
@@ -32,21 +32,19 @@
 					<ul class="mui-table-view">
 						<li class="mui-table-view-cell mui-media">
 							<a id="importContacts" class="mui-navigate-right">
-								<span class="mui-icon mui-icon-person"></span>
-								&nbsp;&nbsp;通讯录导入
+								<span class="mui-icon mui-icon-person"></span> &nbsp;&nbsp;通讯录导入
 							</a>
 						</li>
 						<li class="mui-table-view-cell mui-collapse">
 							<a class="mui-navigate-right">
-								<span class="mui-icon mui-icon-person"></span>
-								&nbsp;&nbsp;手动邀请
+								<span class="mui-icon mui-icon-person"></span> &nbsp;&nbsp;手动邀请
 							</a>
 							<div class="mui-collapse-content">
 								<ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
 									<li class="mui-table-view-cell">
 										<div class="mui-slider-cell">
 											<form id="invite-form" action="">
-												<input class="mui-input-clear" type="text" name="" id="inviteName" placeholder="邀请人姓名"/>
+												<input class="mui-input-clear" type="text" name="" id="inviteName" placeholder="邀请人姓名" />
 												<input class="mui-input-clear" type="tel" name="" id="invitePhoneNum" placeholder="邀请人号码" />
 												<button type="button" class="mui-btn mui-btn-primary mui-btn-block" onclick="return false;">邀请</button>
 											</form>
@@ -67,8 +65,8 @@
 		<script>
 			(function(mui, doc) {
 				mui.init();
-					doc.querySelector('#importContacts').addEventListener('tap', function(){
-						mui.openWindow({
+				doc.querySelector('#importContacts').addEventListener('tap', function() {
+					mui.openWindow({
 						url: 'contacts.html',
 						id: 'contacts.html',
 						show: {
@@ -76,10 +74,7 @@
 						}
 					});
 				}, false);
-				
-				
-//				手动邀请表单验证
-
+				//@todo	手动邀请表单验证
 			}(mui, document));
 		</script>
 	</body>
